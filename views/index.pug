@@ -1,0 +1,14 @@
+extends layout
+
+block head
+  link(rel="stylesheet" href='/stylesheets/item.css')
+
+block content
+  div.container-fluid
+    h1= title
+    br
+    div.welcome
+      h3 Welcome to Parisara Nursery
+      ul
+        li Categories: !{data.category_count}
+        li Items: !{data.item_count}

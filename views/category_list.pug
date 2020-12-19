@@ -1,0 +1,24 @@
+extends layout
+
+block head
+  link(rel="stylesheet" href="/stylesheets/category.css")
+
+block content
+  h1 #{title}
+  div.container-fluid
+    div.row
+      div.col-md-4
+        div.card
+          div.card-body 
+            div.card-text 
+              a(href='category/create') &plus;      
+      each category in category_list
+        div.col-md-4
+          div.card
+            div.card-body 
+              div.card-text 
+                a(href=category.url) #{category.name} 
+                
+
+      else
+        p There are no categories    

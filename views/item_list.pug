@@ -1,0 +1,23 @@
+extends layout
+
+block head
+  link(rel="stylesheet" href='/stylesheets/item.css')
+
+block content
+  div.container-fluid
+  h1=title
+  .row
+    .col-md-4
+      .card
+        .card-body
+          a(href="item/create" class="plus") &plus;
+    each item in item_list
+      .col-md-4
+        .card
+          .card-body
+            .card-text
+              a(href=item.url) #{item.name}
+
+    else
+      p There are no items                  
+  

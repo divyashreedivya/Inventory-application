@@ -1,0 +1,12 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #2b06ff;
+  text-decoration: none;
+}
+.card a{
+  color:#d3ff8c;
+}
+

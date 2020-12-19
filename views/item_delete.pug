@@ -1,0 +1,16 @@
+extends layout
+
+block head
+  link(rel="stylesheet" href='/stylesheets/item.css')
+
+block content
+  div.container-fluid
+    h1 #{title} : #{item.name}
+    br 
+    .jumbotron
+      p #[strong Do you really want to delete this item?]
+
+      form(method='POST' action='')
+        .form-group
+          input#id.form-control(type='hidden' name='id' required='true' value=item._id)  
+        button.btn.btn-primary(type='submit')  Delete

@@ -1,0 +1,27 @@
+extends layout
+
+block head
+  link(rel="stylesheet" href='/stylesheets/item.css')
+
+block content
+  div.container-fluid
+    h1=title
+    div.jumbotron
+      div.img-right
+        img(src='/'+ item.image alt="Item image" style='max-width:300px')  
+      p #[strong Description: ] #{item.description}
+      if(item.sc_name)
+        p #[strong Scientific name : ] #{item.sc_name} 
+      p #[strong Price : ] Rs.#{item.price} 
+      p #[strong Number in stock : ] #{item.number_in_stock} 
+      p #[strong Category : ] 
+        a(href=item.category.url) #{item.category.name}
+
+  
+    hr
+    p 
+      a(href=item.url+'/delete') Delete
+
+    p
+      a(href=item.url+'/update') Update  
+    

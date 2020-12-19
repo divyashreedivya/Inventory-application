@@ -1,0 +1,45 @@
+extends layout
+block head
+  link(rel="stylesheet" href='/stylesheets/item.css')
+
+block content
+  div.container-fluid
+    h1=title
+
+    form(method='POST' action='' enctype="multipart/form-data")
+      .form-group
+        label(for='name') Item Name:
+        input#name.form-control(type='text' placeholder='Enter item name' name='name' required='true' value=(undefined==item?'':item.name))
+        label(for='description') Description: 
+        textarea#description.form-control(type='textarea' placeholder='Description' required='true' name='description' value=(undefined==item?'':item.description))
+        label(for='sc_name') Scientific name: 
+        input#sc_name.form-control(type="text" placeholder='Enter scientific name' name='sc_name' value=(undefined==item?'':item.sc_name))
+        label(for='price') Price :
+        input#price.form-control(type='number' placeholder='In rupees' name='price' value=(undefined==item?'':item.price))
+        label(for='number_in_stock') Number in stock :
+        input#number_in_stock.form-control(type='number' name='number_in_stock' required='true' value=(undefined==item?'':item.number_in_stock))
+      
+        label(for='category') Category:
+          select#category.form-control(type='select', placeholder='Select category' name='category' required='true' )
+            - category_list.sort(function(a, b) {let A = a.name.toUpperCase(); let B = b.name.toUpperCase(); return (A < B) ? -1 : (A > B) ? 1 : 0;});
+            for category in category_list
+              if item
+                option(value=category._id 
+                selected=(
+                  (category._id.toString()==item.category._id    
+                  || category._id.toString()===item.category     
+                  )? 'selected' : false) 
+                  ) #{category.name}
+              else
+                option(value=category._id) #{category.name} 
+          label(for="image") Image: 
+          input.form-control(type="file" name="image")           
+      br                
+      button.btn.btn-primary(type='submit') Submit
+
+    if errors
+      ul 
+        for error in errors
+          li!=error.msg  
+
+  
